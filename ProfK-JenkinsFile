@@ -20,4 +20,8 @@ node{
      sh "${mavenHome}/bin/mvn deploy"
      sh "echo 'nexus completed'"
   }
-}
+  stage('Nexus'){
+     sh "echo 'about to deploy to tomcat'"
+     deploy adapters: [tomcat9(credentialsId: 'tomcat10-cred', path: '', url: 'http://18.219.241.15:8080')], contextPath: null, war: 'target/*war'}
+     sh "echo 'deploynent to tomcat completed'"
+  }
