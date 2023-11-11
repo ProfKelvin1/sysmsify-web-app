@@ -15,4 +15,9 @@ node{
      sh "${mavenHome}/bin/mvn sonar:sonar"
      sh "echo 'sonarqube completed'"
   }
+  stage('Nexus'){
+     sh "echo 'about to start nexus'"
+     sh "${mavenHome}/bin/mvn deploy"
+     sh "echo 'nexus completed'"
+  }
 }
